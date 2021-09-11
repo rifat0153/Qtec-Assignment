@@ -22,7 +22,7 @@ class _AdditionalInfoWidgetState extends State<AdditionalInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: ExpansionPanelList(
           elevation: 0,
           expansionCallback: (index, isOpen) {

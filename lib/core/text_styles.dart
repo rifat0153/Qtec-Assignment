@@ -6,18 +6,23 @@ class MyTextStyles {
         fontSize: fontSize,
         color: color,
       );
-  static TextStyle extraBoldStyle({Color color = Colors.black, double fontSize = 20}) => TextStyle(
+  static TextStyle extraBoldStyle({Color color = Colors.black, double fontSize = 16}) => TextStyle(
         fontSize: fontSize,
         color: color,
         fontWeight: FontWeight.w700,
       );
 
-  static TextStyle boldFontStyle({Color color = Colors.black, double fontSize = 20}) => TextStyle(
+  static TextStyle boldFontStyle({Color color = Colors.black, double fontSize = 16}) => TextStyle(
         fontSize: fontSize,
         color: color,
         fontWeight: FontWeight.w400,
       );
+  static TextStyle buttonTextStyle({Color color = Colors.black, double fontSize = 16}) => TextStyle(
+        fontSize: fontSize,
+        color: color,
+        fontWeight: FontWeight.w500,
+      );
 
-  static TextStyle lineThrough({Color color = Colors.black, double fontSize = 20}) =>
+  static TextStyle lineThrough({Color color = Colors.black, double fontSize = 16}) =>
       TextStyle(fontSize: fontSize, color: color, decoration: TextDecoration.lineThrough);
 }

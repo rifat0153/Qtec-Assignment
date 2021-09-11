@@ -35,11 +35,11 @@ class PricingWidget extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: 'BDT ',
-              style: MyTextStyles.lineThrough(color: Colors.grey, fontSize: 16.sp),
+              style: MyTextStyles.lineThrough(color: MyColors.dark_2, fontSize: 16.sp),
               children: <TextSpan>[
                 TextSpan(
                   text: '200000',
-                  style: MyTextStyles.lineThrough(color: Colors.grey, fontSize: 16.sp),
+                  style: MyTextStyles.lineThrough(color: MyColors.dark_2, fontSize: 16.sp),
                 ),
               ],
             ),

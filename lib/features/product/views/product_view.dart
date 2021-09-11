@@ -5,17 +5,20 @@ import 'package:qtec_assignment/core/my_colors.dart';
 import 'package:qtec_assignment/core/text_styles.dart';
 import 'package:qtec_assignment/features/product/controllers/product_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qtec_assignment/features/product/widgets/additional_info_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/color_select_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/delivery_info_widget.dart';
+import 'package:qtec_assignment/features/product/widgets/description_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/payment_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/pricing_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/rating_widget.dart';
 import 'package:qtec_assignment/features/product/widgets/title_widget.dart';
 import 'package:qtec_assignment/models/product.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({Key? key}) : super(key: key);
-  static const route = 'product_view';
+  static const route = '/product_view';
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ProductView extends StatelessWidget {
       backgroundColor: MyColors.bg_product,
       appBar: AppBar(
         elevation: 0,
-        leading: const Icon(Icons.chevron_left, color: Colors.black),
+        leading: IconButton(onPressed: Get.back, icon: const Icon(Icons.chevron_left, color: Colors.black)),
         titleSpacing: 0,
         title: const Text(
           'Product Details',
@@ -33,7 +36,11 @@ class ProductView extends StatelessWidget {
           ),
         ),
         actions: [
-          const Icon(Icons.share, color: Colors.black),
+          IconButton(
+              onPressed: () async {
+                await Share.share('product info or id goes here');
+              },
+              icon: const Icon(Icons.share, color: Colors.black)),
           SizedBox(width: 19.w),
         ],
         backgroundColor: Colors.white,
@@ -81,6 +88,8 @@ class _BuildBody extends StatelessWidget {
                       ),
                       DeliveryInfoWidget(product),
                       PaymentMethodWidget(product),
+                      DescriptionWidget(product),
+                      AdditionalInfoWidget(product),
                     ],
                   ),
                 ),

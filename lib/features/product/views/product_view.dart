@@ -1,35 +1,68 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qtec_assignment/core/my_colors.dart';
+import 'package:qtec_assignment/core/text_styles.dart';
 import 'package:qtec_assignment/features/product/controllers/product_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qtec_assignment/features/product/widgets/pricing_widget.dart';
+import 'package:qtec_assignment/features/product/widgets/title_widget.dart';
+import 'package:qtec_assignment/models/product.dart';
 
 class ProductView extends StatelessWidget {
-  ProductView({Key? key}) : super(key: key);
+  const ProductView({Key? key}) : super(key: key);
   static const route = 'product_view';
-
-  final ProductController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Obx(
-          () => Container(
-            child: controller.getProduct().when(
-                data: (data) => Column(
-                      children: [
-                        Text(data.product_name.toString()),
-                        Text(data.category_list!.first.category_name.toString()),
-                        Text(data.brand.toString()),
-                        Text(data.product_price.toString()),
-                        Text(data.details_images.toString()),
-                      ],
-                    ),
-                empty: () => const Text('data'),
-                loading: () => const Center(child: CupertinoActivityIndicator()),
-                error: (e) => Text(e.toString())),
+      appBar: AppBar(
+        elevation: 0,
+        leading: const Icon(Icons.chevron_left, color: Colors.black),
+        titleSpacing: 0,
+        title: const Text(
+          'Product Details',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
           ),
         ),
+        actions: [
+          const Icon(Icons.share, color: Colors.black),
+          SizedBox(width: 19.w),
+        ],
+        backgroundColor: Colors.white,
+      ),
+      body: SafeArea(child: _BuildBody()),
+    );
+  }
+}
+
+class _BuildBody extends StatelessWidget {
+  _BuildBody({Key? key}) : super(key: key);
+  final ProductController controller = Get.find();
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Container(
+        child: controller.getProduct().when(
+            data: (product) => Column(
+                  children: [
+                    TitleWidget(product),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+                      child: Text(
+                        product.product_name.toString(),
+                        style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                    PricingWidget(product)
+                  ],
+                ),
+            empty: () => const Text('data'),
+            loading: () => const Center(child: CupertinoActivityIndicator()),
+            error: (e) => Text(e.toString())),
       ),
     );
   }

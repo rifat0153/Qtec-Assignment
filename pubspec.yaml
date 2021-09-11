@@ -27,6 +27,7 @@ dependencies:
   flutter_screenutil: ^5.0.0+2
   freezed: ^0.14.1+3
   get: null
+  google_fonts: ^2.1.0
   http: null
   json_serializable: ^4.1.1
   very_good_analysis: ^2.3.0

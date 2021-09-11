@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qtec_assignment/features/product/controllers/product_controller.dart';
 import 'package:qtec_assignment/features/product/services/product_service.dart';
 import 'package:qtec_assignment/features/product/views/product_view.dart';
@@ -18,9 +19,7 @@ class MyApp extends StatelessWidget {
       builder: () => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(primarySwatch: Colors.blue, fontFamily: GoogleFonts.roboto().fontFamily),
         getPages: [
           GetPage(
             name: '/',
